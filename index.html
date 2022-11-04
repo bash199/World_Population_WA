@@ -6,14 +6,24 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="/style/normalize.css">
    <link rel="stylesheet" href="/style/style.css">
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
    <script src="app.js" defer></script>
    <title>Document</title>
 </head>
 <body>
-   <button class="africa">Africa</button>
-   <button class="americas">Americas</button>
-   <button class="asia">Asia</button>
-   <button class="europe">Europe</button>
-   <button class="oceania">Oceania</button>
+   <h2>World Population</h2>
+   <div class="continentBtnContainer">
+      <button class="africa citeisBtns">Africa</button>
+      <button class="americas citeisBtns">Americas</button>
+      <button class="asia citeisBtns">Asia</button>
+      <button class="europe citeisBtns">Europe</button>
+      <button class="oceania citeisBtns">Oceania</button>
+   </div>
+   <div id="myChartContainer">
+      <canvas id="myChart"></canvas>
+   </div>
+   <div class="cityCon">
+      <div id="citeisBtnsContainer"></div>
+   </div>
 </body>
 </html>

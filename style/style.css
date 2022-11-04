@@ -1,0 +1,45 @@
+*{
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+ body{
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background-color: #ececec;
+}
+#myChartContainer{
+   width: 900px;
+} 
+
+.continentBtnContainer{
+   padding: 5px;
+   margin-top: 10px;
+}
+
+.citeisBtns{
+   padding: 2px;
+   margin: 3px;
+   background-color: rgb(253, 164, 3,0.8);
+   background-color: #f2d6a5;
+   color: #272343;
+   cursor: pointer;
+   border: solid 1px #777;
+   border-radius: 7px;
+   width: fit-content;
+   height: fit-content;
+}
+.city{
+   font-size: 0.7rem;
+}
+.cityCon{
+   display: flex;
+   justify-content: center;
+   width: calc(100% - 20px);
+}
+h2{
+   margin: 5px;
+}
