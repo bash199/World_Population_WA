@@ -31,19 +31,17 @@ const getCountriesData = async () => {
          const countryCommonName = currentRegion[j].name.common;
          const countryOfficialName = currentRegion[j].name.official;
          const countryPopulation = currentRegion[j].population;
-         const flag = currentRegion[j].flags;
          const neighbors = (currentRegion[j].borders !==undefined ?currentRegion[j].borders.length :0);
-         fillObject(world[continentName],countryOfficialName,countryCommonName,countryPopulation,neighbors,flag,continentName);
+         fillObject(world[continentName],countryOfficialName,countryCommonName,countryPopulation,neighbors,continentName);
      }
    }
 };
 
-function fillObject(arr,Offname,CommonName,pop,neighbors,flag,continent){
+function fillObject(arr,Offname,CommonName,pop,neighbors,continent){
    arr.push({
       CommonName: CommonName,
       Officialname: Offname,
       population: pop,
-      flag: flag,
       neighbors: neighbors,
       continent:continent
    })
@@ -89,7 +87,7 @@ function createAndAppendCanvas(){
 
 Chart.defaults.color = '#38598b';
 
- function createChart(labels,newData){
+ function createChart(labels,populationData,neighborsData){
    createAndAppendCanvas();
    const ctx = document.getElementById('myChart');
    const myChart = new Chart(ctx, {
@@ -98,11 +96,18 @@ Chart.defaults.color = '#38598b';
          labels: labels,
          datasets: [{
             label: 'population',
-            data: newData,
-            backgroundColor: 'rgb(242, 214, 165,0.8)',
+            data: populationData,
+            backgroundColor: 'rgb(242, 214, 165,0.6)',
             borderColor: '#777',
             borderWidth: 1
-         }]
+         },
+         {
+         label: 'neighbors',
+            data: neighborsData,
+            backgroundColor: 'rgb(255, 204, 204,0.6)',
+            borderColor: '#777',
+            borderWidth: 1
+      }]
       },
       options: {
          scales: {
@@ -142,12 +147,13 @@ async function handleCiteisEvents(event){
    }
    title.textContent='NO DATA FOUND!!'
 }
-
 function handleEvents(event){
    title.textContent='World Population'
    const labels = world[event.target.textContent].map(el => el.CommonName);
    const population = world[event.target.textContent].map(el => el.population );
-   createChart(labels,population);
+   const neighbors = world[event.target.textContent].map(el => el.neighbors );
+
+   createChart(labels,population,neighbors);
    bulidCiteisButtons(world[event.target.textContent]);
 }
 
