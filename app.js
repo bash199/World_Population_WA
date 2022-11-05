@@ -86,7 +86,7 @@ function createAndAppendCanvas(){
 }
 
 Chart.defaults.color = '#38598b';
-
+Chart.defaults.font.size = 16;
  function createChart(labels,populationData,neighborsData){
    createAndAppendCanvas();
    const ctx = document.getElementById('myChart');
