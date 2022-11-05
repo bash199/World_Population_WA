@@ -8,6 +8,7 @@ const OceaniaBtn = document.querySelector('.oceania');
 const btnsContainer = document.querySelector('.continentBtnContainer');
 const citeisBtnsContainer = document.querySelector('#citeisBtnsContainer');
 const cityButton = document.querySelector('#citeisBtnsContainer');
+const title = document.querySelector('.title');
 
 const fetchData = async (url) => {
    try {
@@ -131,6 +132,7 @@ async function handleCiteisEvents(event){
    const btnContinent = event.target.getAttribute('data-continent');
    const res = await checkCommonOrOfficial(world[btnContinent][btn]);
    if(res.data){
+      title.textContent='World Population'
       const labels = res.data.map((el)=>{
          return  el.city });
       const population = res.data.map((el)=>{
@@ -138,10 +140,11 @@ async function handleCiteisEvents(event){
       createChart(labels,population);
       return;
    }
-   console.log('NO DATA FOUND!!');
+   title.textContent='NO DATA FOUND!!'
 }
 
 function handleEvents(event){
+   title.textContent='World Population'
    const labels = world[event.target.textContent].map(el => el.CommonName);
    const population = world[event.target.textContent].map(el => el.population );
    createChart(labels,population);
