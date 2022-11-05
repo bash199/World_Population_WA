@@ -86,8 +86,9 @@ function createAndAppendCanvas(){
    div.appendChild(canvas);
 }
 
-Chart.defaults.color = '#38598b'
-async function createChart(labels,newData){
+Chart.defaults.color = '#38598b';
+
+ function createChart(labels,newData){
    createAndAppendCanvas();
    const ctx = document.getElementById('myChart');
    const myChart = new Chart(ctx, {
